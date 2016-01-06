@@ -17,7 +17,7 @@ definition(
     name: "JSON API",
     namespace: "jnewland",
     author: "Jesse Newland",
-    description: "A JSON API for SmartThings",
+    description: "A JSON API for SmartThings Modified For Europe",
     category: "SmartThings Labs",
     iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
     iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
@@ -56,11 +56,11 @@ def copyConfig() {
 
         section() {
             paragraph "View this SmartApp's configuration to use it in other places."
-            href url:"https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/config?access_token=${state.accessToken}", style:"embedded", required:false, title:"Config", description:"Tap, select, copy, then click \"Done\""
+            href url:"https://graph-eu01-euwest1.api.smartthings.com/api/smartapps/installations/${app.id}/config?access_token=${state.accessToken}", style:"embedded", required:false, title:"Config", description:"Tap, select, copy, then click \"Done\""
         }
 
         section() {
-            href url:"https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/devices?access_token=${state.accessToken}", style:"embedded", required:false, title:"Debug", description:"View accessories JSON"
+            href url:"https://graph-eu01-euwest1.api.smartthings.com/api/smartapps/installations/${app.id}/devices?access_token=${state.accessToken}", style:"embedded", required:false, title:"Debug", description:"View accessories JSON"
         }
     }
 }
@@ -84,7 +84,7 @@ def renderConfig() {
 
 def deviceCommandMap(device, type) {
   device.supportedCommands.collectEntries { command->
-      def commandUrl = "https://graph.api.smartthings.com/api/smartapps/installations/${app.id}/${type}/${device.id}/command/${command.name}?access_token=${state.accessToken}"
+      def commandUrl = "https://graph-eu01-euwest1.api.smartthings.com/api/smartapps/installations/${app.id}/${type}/${device.id}/command/${command.name}?access_token=${state.accessToken}"
       [
         (command.name): commandUrl
       ]
